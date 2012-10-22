@@ -1,0 +1,12 @@
+<%= form_for(@firm) do |f| %>
+
+  <p><%= f.label "Название фирмы" %>
+  <%= f.text_field :name %></p>
+
+  <div><%= f.label "Описание фирмы" %>
+  <%= f.text_area :description, rows: "6"%></div>
+
+
+  <div><%= f.submit "Создать фирму", class: "btn btn-large btn-primary" %></div>
+
+<% end %>

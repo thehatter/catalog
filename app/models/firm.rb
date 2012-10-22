@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: firms
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Firm < ActiveRecord::Base
   attr_accessible :description, :name
   belongs_to :user
