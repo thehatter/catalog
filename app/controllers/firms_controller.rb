@@ -1,6 +1,6 @@
 class FirmsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create]
-  before_filter :correct_user,   only: :destroy
+  before_filter :authenticate_user!, :only => [:new, :create, :destroy, :edit , :update]
+  before_filter :correct_user, :only => [:destroy, :edit , :update]
 
   def index
     @firms = Firm.all
@@ -14,8 +14,16 @@ class FirmsController < ApplicationController
       
   end
 
+  def show
+    @firm = Firm.find(params[:id])
+  end
+
   def new
     @firm = Firm.new
+  end
+
+  def edit
+    @firm = Firm.find(params[:id])
   end
 
   def create
@@ -27,6 +35,20 @@ class FirmsController < ApplicationController
       redirect_to root_url
     end
   end
+
+  def update
+    @firm = Firm.find(params[:id])
+
+      if @firm.update_attributes(params[:firm])
+        flash[:success] = "Firm saved!"
+      redirect_to root_url
+      else
+        flash[:success] = "Firm NOT SAVED!"
+        redirect_to root_url
+      end
+
+  end
+
 
   def destroy
     @firm.destroy

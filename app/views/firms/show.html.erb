@@ -1,0 +1,10 @@
+<p>
+  <h3><%= @firm.name %></h3>
+</p>
+
+<p>
+  <%= @firm.description %>
+</p>
+
+<%= link_to 'Edit', edit_firm_path(@firm) %> |
+<%= link_to 'Back', firms_path %>

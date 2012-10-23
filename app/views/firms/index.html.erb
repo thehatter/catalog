@@ -1,17 +1,25 @@
 <% @firms.each do |firm| %>
-  <div class="well well-small">
-  	<h3><%= firm.name  %></h4>
-    <small><%= firm.description  %></small>
+  <div class="well well-small clearfix">
+
+    <h3><%= link_to firm.name, firm %><br/></h3>
+
+    <small class="clearfix"><%= firm.description  %></small>
     
 
 
-		<% if user_signed_in? %>
-	  <% if current_user?(firm.user) || current_user.admin? %>
-	    <%= link_to "delete", firm, method: :delete,
-	                                data: { confirm: "You sure?" },
-	                                class: "btn pull-right"%>
-	  <% end %>
-	  <% end %>
+    <% if user_signed_in? %>
+    <% if current_user?(firm.user) || current_user.admin? %>
+
+      <div class="btn-group pull-right a_indent-top5px ">
+        <%= link_to 'edit', edit_firm_path(firm), class: "btn"%>
+        <%= link_to "delete", firm, method: :delete,
+                                    data: { confirm: "You sure?" },
+                                    class: "btn btn-danger"%>
+      </div>
+
+
+    <% end %>
+    <% end %>
 
   </div>
 
