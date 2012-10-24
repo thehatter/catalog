@@ -11,7 +11,7 @@ class FirmsController < ApplicationController
     # else
     #   flash[:success] = "WTF"
     # end
-      
+
   end
 
   def show
@@ -66,7 +66,6 @@ class FirmsController < ApplicationController
         redirect_to root_url
         flash[:error] = "current_user is not fk admin!" if !current_user.admin?
       end
-      
     end
-
+    
 end
