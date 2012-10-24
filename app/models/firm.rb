@@ -14,4 +14,8 @@ class Firm < ActiveRecord::Base
   attr_accessible :description, :name
   belongs_to :user
   validates :user_id, presence: true
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
 end

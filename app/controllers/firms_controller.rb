@@ -43,7 +43,7 @@ class FirmsController < ApplicationController
         flash[:success] = "Firm saved!"
       redirect_to root_url
       else
-        flash[:success] = "Firm NOT SAVED!"
+        flash[:error] = "Firm NOT SAVED!"
         redirect_to root_url
       end
 
@@ -59,11 +59,14 @@ class FirmsController < ApplicationController
   private
 
     def correct_user
-      @firm = current_user.firms.find_by_id(params[:id])
-      @firm = Firm.find_by_id(params[:id]) if current_user.admin? 
+      @firm = current_user.firms.find_by_slug(params[:id])
+      @firm = Firm.find_by_slug(params[:id]) if current_user.admin? 
       
-      redirect_to root_url if @firm.nil?
-      flash[:success] = "current_user is not fk admin!" if !current_user.admin?
+      if @firm.nil?
+        redirect_to root_url
+        flash[:error] = "current_user is not fk admin!" if !current_user.admin?
+      end
+      
     end
 
 end
