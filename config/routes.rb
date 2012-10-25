@@ -1,7 +1,7 @@
 Catalog::Application.routes.draw do
   devise_for :users
   resources :firms
-  resources :category
+  resources :categories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +52,7 @@ Catalog::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'category#index'
+   root :to => 'categories#index'
 
   # See how all your routes lay out with "rake routes"
 

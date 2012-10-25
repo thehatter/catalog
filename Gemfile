@@ -6,6 +6,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'devise'
 gem "friendly_id", "~> 4.0.1"
 gem 'russian'
+gem 'ancestry'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

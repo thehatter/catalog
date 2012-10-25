@@ -32,7 +32,8 @@ class FirmsController < ApplicationController
       flash[:success] = "Firm created!"
       redirect_to root_url
     else
-      redirect_to root_url
+        flash[:error] = "Firm NOT CREATED!"
+        redirect_to root_url
     end
   end
 
