@@ -6,6 +6,7 @@
   <div><%= f.label "Описание фирмы" %>
   <%= f.text_area :description, rows: "10"%></div>
 
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
 
   <div><%= f.submit "Сохранить фирму", class: "btn btn-large btn-primary" %></div>
 

@@ -9,12 +9,15 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  slug        :string(255)
+#  category_id :integer
 #
 
 class Firm < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :description, :name, :category_id
   belongs_to :user
   validates :user_id, presence: true
+
+  belongs_to :category
 
   extend FriendlyId
   friendly_id :name, use: :slugged

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :destroy, :edit , :update]
-  before_filter :is_admin?, :only => [:destroy, :edit , :update, :index]
+  before_filter :is_admin?, :only => [:destroy, :edit , :update]
 
   def index
     @categories = Category.scoped
