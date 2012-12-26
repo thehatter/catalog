@@ -12,7 +12,7 @@
     <% if user_signed_in? %>
       <% if current_user?(firm.user) || current_user.admin? %>
         <div class="btn-group pull-right a_indent-top5px">
-          <%= link_to 'edit', edit_firm_path(firm), class: "btn"%>
+          <%= link_to 'edit', category_firm_path(@category, firm), class: "btn"%>
           <%= link_to "delete", firm, method: :delete,
                                       data: { confirm: "You sure?" },
                                       class: "btn btn-danger"%>
