@@ -22,4 +22,8 @@ class Firm < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  def to_param
+    slug
+  end
+
 end

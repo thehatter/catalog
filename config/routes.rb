@@ -10,6 +10,7 @@ Catalog::Application.routes.draw do
   resources :categories do
     resources :firms, :except => [:show]
   end
+  resources :firms, :only => [:new, :create]
 
   get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
 
