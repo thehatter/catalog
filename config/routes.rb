@@ -3,13 +3,19 @@ Catalog::Application.routes.draw do
   # resources :firms
   # resources :categories
 
-  resources :categories, :path => "/" do
-    resources :firms
+  # resources :categories, :path => "/" do
+  #   resources :firms
+  # end
+
+  resources :categories do
+    resources :firms, :except => [:show]
   end
 
-  match "firm_new" => "firms#new"
+  get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
 
-  get ":category_id/*categories/:firm_id", :to => "firms#show"
+  # match "firm_new" => "firms#new"
+
+  # get ":category_id/*categories/:firm_id", :to => "firms#show"
 
 
   # The priority is based upon order of creation:
