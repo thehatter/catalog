@@ -1,8 +1,13 @@
 Catalog::Application.routes.draw do
   devise_for :users
-  resources :firms
-  resources :categories
+  # resources :firms
+  # resources :categories
 
+  resources :categories, :path => "/" do
+    resources :firms
+  end
+
+  get "*categories/*firms", :to => "controller_name#action_name"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,7 +4,13 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.scoped
+  end
 
+
+  def show
+    # @firms = Firm.all
+    @category = Category.find(params[:id])
+    @firms = @category.firms
   end
 
 

@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  ancestry   :string(255)
+#  slug       :string(255)
 #
 
 class Category < ActiveRecord::Base
@@ -14,5 +15,12 @@ class Category < ActiveRecord::Base
 
   has_ancestry
   has_many :firms
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+  def to_param
+    slug
+  end
   
 end
