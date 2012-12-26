@@ -7,7 +7,11 @@ Catalog::Application.routes.draw do
     resources :firms
   end
 
-  get "*categories/*firms", :to => "controller_name#action_name"
+  match "firm_new" => "firms#new"
+
+  get ":category_id/*categories/:firm_id", :to => "firms#show"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
