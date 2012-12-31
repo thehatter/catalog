@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :destroy, :edit , :update]
   before_filter :is_admin?, :only => [:destroy, :edit , :update]
+  before_filter :category, :only => [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.scoped
@@ -9,7 +10,6 @@ class CategoriesController < ApplicationController
 
   def show
     # @firms = Firm.all
-    @category = Category.find(params[:id])
     @firms = @category.firms
   end
 
@@ -29,5 +29,9 @@ class CategoriesController < ApplicationController
     end
   end
 
-
+private
+  def category
+    @category ||= Category.find_by_slug!(params[:id])
+  end
+  helper_method :category
 end

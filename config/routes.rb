@@ -1,22 +1,35 @@
 Catalog::Application.routes.draw do
   devise_for :users
-  # resources :firms
-  # resources :categories
 
   # resources :categories, :path => "/" do
   #   resources :firms
   # end
 
-  resources :categories do
-    resources :firms, :except => [:show]
+  resources :categories, only: [:index, :new, :create]
+  resources :categories, path: "", except: [:index, :new, :create] do
+    resources :firms
   end
+  
   resources :firms, :only => [:new, :create]
 
-  get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
+  # resources :categories do
+  #   resources :firms, :except => [:show]
+  # end
+
+  # resources :firms, :only => [:new, :create]
+
+  # get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
+
+
+
+
 
   # match "firm_new" => "firms#new"
 
   # get ":category_id/*categories/:firm_id", :to => "firms#show"
+
+
+
 
 
   # The priority is based upon order of creation:
