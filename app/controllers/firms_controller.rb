@@ -1,6 +1,7 @@
 class FirmsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :destroy, :edit , :update]
   before_filter :correct_user, :only => [:destroy, :edit , :update]
+  before_filter :firm, :only => [:show, :edit, :update, :destroy]
 
   def index
     @firms = Firm.all
@@ -15,7 +16,6 @@ class FirmsController < ApplicationController
   end
 
   def show
-    @firm = Firm.find(params[:id])
   end
 
   def new
@@ -24,7 +24,6 @@ class FirmsController < ApplicationController
   end
 
   def edit
-    @firm = Firm.find(params[:id])
   end
 
   def create
@@ -39,7 +38,6 @@ class FirmsController < ApplicationController
   end
 
   def update
-    @firm = Firm.find(params[:id])
 
       if @firm.update_attributes(params[:firm])
         flash[:success] = "Firm saved!"
@@ -81,5 +79,13 @@ class FirmsController < ApplicationController
     end
     result
   end
-    
+
+
+# !!!!!!!!!!!!!!
+
+  def firm
+    @firm ||= Firm.find_by_slug!(params[:id].split("/").last)
+  end
+  helper_method :category
+
 end

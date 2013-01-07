@@ -9,6 +9,9 @@ Catalog::Application.routes.draw do
   resources :categories, path: "", except: [:index, :new, :create] do
     resources :firms
   end
+
+  get '*id', to: 'categories#show'
+  get '*id', to: 'firms#show'
   
   resources :firms, :only => [:new, :create]
 

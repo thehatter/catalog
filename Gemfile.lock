@@ -172,19 +172,19 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
-  bcrypt-ruby (= 3.0.1)
-  bootstrap-sass (= 2.0.4)
-  capybara (= 1.1.2)
-  coffee-rails (~> 3.2.1)
+  bcrypt-ruby
+  bootstrap-sass
+  capybara
+  coffee-rails
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
   devise
-  factory_girl_rails (= 4.1.0)
+  factory_girl_rails
   friendly_id (~> 4.0.1)
   jquery-rails
-  rails (= 3.2.8)
-  rspec-rails (= 2.11.0)
+  rails
+  rspec-rails
   russian
-  sass-rails (~> 3.2.3)
+  sass-rails
   sqlite3
   uglifier (>= 1.0.3)

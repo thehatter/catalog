@@ -6,4 +6,8 @@ module CategoriesHelper
     end.join.html_safe
   end
 
+  def nested_category_path(category)
+    "/" + (category.ancestors + [category]).map(&:to_param).join("/")
+  end
+
 end

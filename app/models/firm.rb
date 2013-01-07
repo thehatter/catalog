@@ -16,14 +16,21 @@ class Firm < ActiveRecord::Base
   attr_accessible :description, :name, :category_id
   belongs_to :user
   validates :user_id, presence: true
+  validates :slug, uniqueness: true, presence: true
+
+  before_validation :generate_slug
 
   belongs_to :category
 
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  # extend FriendlyId
+  # friendly_id :name, use: :slugged
 
   def to_param
     slug
+  end
+
+  def generate_slug
+    self.slug ||= name.parameterize
   end
 
 end
