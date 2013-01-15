@@ -13,8 +13,10 @@
 #
 
 class Firm < ActiveRecord::Base
-  attr_accessible :description, :name, :category_id
+  attr_accessible :description, :name, :category_id, :url
+
   belongs_to :user
+
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true
 
@@ -22,8 +24,6 @@ class Firm < ActiveRecord::Base
 
   belongs_to :category
 
-  # extend FriendlyId
-  # friendly_id :name, use: :slugged
 
   def to_param
     slug
@@ -32,5 +32,6 @@ class Firm < ActiveRecord::Base
   def generate_slug
     self.slug ||= name.parameterize
   end
+
 
 end

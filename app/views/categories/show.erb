@@ -1,7 +1,7 @@
 <% @firms.each do |firm| %>
   <div class="well well-small clearfix">
 
-    <h3><%= link_to firm.name, category_firm_path(@category, firm) %><br/></h3>
+    <h3><%= link_to firm.name, show_firm_path(@category, firm) %><br/></h3>
 
     <small class="clearfix"><%= firm.description  %></small>
 

@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 
 private
   def category
-    @category ||= Category.find_by_slug!(params[:id].split("/").last)
+    @category ||= Category.find_by_slug!(params[:id])
   end
   helper_method :category
   

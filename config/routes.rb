@@ -5,25 +5,37 @@ Catalog::Application.routes.draw do
   #   resources :firms
   # end
 
-  resources :categories, only: [:index, :new, :create]
-  resources :categories, path: "", except: [:index, :new, :create] do
-    resources :firms
-  end
-
-  get '*id', to: 'categories#show'
-  get '*id', to: 'firms#show'
-  
-  resources :firms, :only => [:new, :create]
-
-  # resources :categories do
-  #   resources :firms, :except => [:show]
+  # resources :categories, only: [:index, :new, :create]
+  # resources :categories, path: "/", except: [:index, :new, :create] do
+  #   resources :firms, except: [:new, :create]
   # end
 
+  # get '*id', to: 'categories#show'
+  
   # resources :firms, :only => [:new, :create]
 
+
+
+  resources :categories, path: "/" do
+    resources :firms, :except => [:new, :create, :show]
+  end
+
+
+  resources :firms, :only => [:new, :create]
+
+  # get ":id", :to => "categories#show"
+
+  get ":category_id/:id", :to => "firms#show", :as => :show_firm
+
+
+
+
+
+
+
+  # get "*id", :to => "firms#show"
+
   # get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
-
-
 
 
 

@@ -19,10 +19,6 @@ class Category < ActiveRecord::Base
   has_ancestry
   has_many :firms
 
-  # extend FriendlyId
-  # friendly_id :name, use: :slugged
-
-
 
   def to_param
     slug
