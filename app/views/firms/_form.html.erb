@@ -8,6 +8,27 @@
 
   <%= f.select :category_id, @categories%>
 
+  <fieldset>
+    <legend>Аватар</legend>
+    <p>
+      <%= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar? %>
+      <% unless @firm.new_record? %>
+        <%= f.check_box :remove_favatar %>
+        <%= f.label :remove_favatar, "remove favatar" %>
+      <% end %>
+    </p>
+    <p>
+      <%= f.label :favatar, "Upload local file:" %><br />
+      <%= f.file_field :favatar %>
+      <%= f.hidden_field :favatar_cache %>
+    </p>
+    <p><em>…or…</em></p>
+    <p>
+      <%= f.label :remote_favatar_url, "Download remote file:" %><br />
+      <%= f.text_field :remote_favatar_url %>
+    </p>
+  </fieldset>
+
   <div><%= f.submit "Сохранить фирму", class: "btn btn-large btn-primary" %></div>
 
 <% end %>

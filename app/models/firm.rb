@@ -13,17 +13,18 @@
 #
 
 class Firm < ActiveRecord::Base
-  attr_accessible :description, :name, :category_id, :url
+  before_validation :generate_slug
 
-  belongs_to :user
+  attr_accessible :description, :name, :category_id, 
+                  :favatar, :remote_favatar_url, :favatar_cache, :remove_favatar
 
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true
 
-  before_validation :generate_slug
-
+  belongs_to :user
   belongs_to :category
 
+  mount_uploader :favatar, FavatarUploader
 
   def to_param
     slug

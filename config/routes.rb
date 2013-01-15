@@ -17,11 +17,11 @@ Catalog::Application.routes.draw do
 
 
   resources :categories, path: "/" do
-    resources :firms, :except => [:new, :create, :show]
+    resources :firms, :except => [:new, :create, :show, :edit]
   end
 
 
-  resources :firms, :only => [:new, :create]
+  resources :firms, :only => [:new, :create, :edit]
 
   # get ":id", :to => "categories#show"
 
