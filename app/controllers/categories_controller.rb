@@ -33,6 +33,7 @@ private
   def category
     @category ||= Category.find_by_slug!(params[:id])
   end
+  
   helper_method :category
   
 end

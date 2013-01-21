@@ -24,6 +24,7 @@ class FirmsController < ApplicationController
   end
 
   def edit
+    @categories = ancestry_options(Category.scoped.arrange(:order => 'name')) {|i| "#{'-' * i.depth} #{i.name}" }
   end
 
   def create
@@ -32,21 +33,19 @@ class FirmsController < ApplicationController
       flash[:success] = "Firm created!"
       redirect_to root_url
     else
-        flash[:error] = "Firm NOT CREATED!"
-        redirect_to root_url
+      flash[:error] = "Firm NOT CREATED!"
+      redirect_to root_url
     end
   end
 
   def update
-
-      if @firm.update_attributes(params[:firm])
-        flash[:success] = "Firm saved!"
+    if @firm.update_attributes(params[:firm])
+      flash[:success] = "Firm saved!"
+    redirect_to root_url
+    else
+      flash[:error] = "Firm NOT SAVED!"
       redirect_to root_url
-      else
-        flash[:error] = "Firm NOT SAVED!"
-        redirect_to root_url
-      end
-
+    end
   end
 
 
@@ -58,15 +57,15 @@ class FirmsController < ApplicationController
 
   private
 
-    def correct_user
-      @firm = current_user.firms.find_by_slug(params[:id])
-      @firm = Firm.find_by_slug(params[:id]) if current_user.admin? 
-      
-      if @firm.nil?
-        redirect_to root_url
-        flash[:error] = "current_user is not fk admin!" if !current_user.admin?
-      end
+  def correct_user
+    @firm = current_user.firms.find_by_slug(params[:id])
+    @firm = Firm.find_by_slug(params[:id]) if current_user.admin? 
+    
+    if @firm.nil?
+      redirect_to root_url
+      flash[:error] = "current_user is not fk admin!" if !current_user.admin?
     end
+  end
 
   def ancestry_options(items, &block)
     return ancestry_options(items){ |i| "#{'-' * i.depth} #{i.name}" } unless block_given?
@@ -86,6 +85,7 @@ class FirmsController < ApplicationController
   def firm
     @firm ||= Firm.find_by_slug!(params[:id].split("/").last)
   end
-  helper_method :category
+  
+  helper_method :firm
 
 end

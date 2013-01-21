@@ -11,7 +11,7 @@
   <fieldset>
     <legend>Аватар</legend>
     <p>
-      <%= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar? %>
+      <%= image_tag(@firm.favatar_url) if @firm.favatar? %>
       <% unless @firm.new_record? %>
         <%= f.check_box :remove_favatar %>
         <%= f.label :remove_favatar, "remove favatar" %>

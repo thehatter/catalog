@@ -7,6 +7,7 @@ gem 'devise'
 gem 'russian'
 gem 'ancestry'
 gem 'carrierwave'
+gem 'rmagick'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
