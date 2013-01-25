@@ -18,6 +18,9 @@ class CategoriesController < ApplicationController
     @category = Category.new(:parent_id => params[:parent_id])
   end
 
+  def edit
+  end
+
   def create
     @category = Category.new(params[:category])
     if @category.save
@@ -28,6 +31,23 @@ class CategoriesController < ApplicationController
       redirect_to root_url
     end
   end
+
+  def update
+    if @category.update_attributes(params[:category])
+      flash[:success] = "Category saved!"
+    redirect_to root_url
+    else
+      flash[:error] = "Category NOT SAVED!"
+      redirect_to root_url
+    end
+  end
+
+  def destroy
+    @category.destroy
+    flash[:success] = "Category deleted!"
+    redirect_to root_url
+  end
+
 
 private
   def category

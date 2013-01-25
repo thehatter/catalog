@@ -15,19 +15,13 @@ Catalog::Application.routes.draw do
   # resources :firms, :only => [:new, :create]
 
 
-
-  resources :categories, path: "/" do
-    resources :firms, :except => [:new, :create, :show, :edit, :update]
-  end
+  get "firms", :to => "firms#index"
 
 
-  resources :firms, :only => [:new, :create, :edit, :update]
-
-  # get ":id", :to => "categories#show"
+  resources :firms, :except => [:show, :index]
+  resources :categories, path: "/"
 
   get ":category_id/:id", :to => "firms#show", :as => :show_firm
-
-
 
 
 

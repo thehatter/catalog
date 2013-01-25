@@ -1,9 +1,14 @@
-<div class="category">
+<div class="category <%= category.id %>">
 
   <div class="well well-small clearfix">
 
     <h3><%= link_to category.name, category_path(category) %><br/></h3>
     <%= link_to "Новая подкатегория", new_category_path(:parent_id => category.id), class: "btn btn-primary pull-right" %>
+
+    <%= link_to 'edit',  edit_category_path(category), class: "btn"%>
+    <%= link_to "delete", category_path(category), method: :delete,
+                                           data: { confirm: "You sure?" },
+                                           class: "btn btn-danger"%>
   </div>
 
 </div>
