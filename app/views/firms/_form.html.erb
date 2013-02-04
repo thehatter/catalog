@@ -8,6 +8,19 @@
 
   <%= f.select :category_id, @categories%>
 
+
+  <%= f.fields_for :phones do |phones_form| %>
+    <li>
+      
+      <%= phones_form.select(:number_type, options_for_select(
+                             phone_number_type_select_options, phones_form.object.number_type)) %>
+
+      <%= phones_form.label :number %>
+      <%= phones_form.text_field :number %>
+      ...
+    </li>
+  <% end %>
+
   <fieldset>
     <legend>Аватар</legend>
     <p>

@@ -11,13 +11,15 @@
 #
 
 class Category < ActiveRecord::Base
+  
+  has_ancestry
+  has_many :firms
+
   attr_accessible :name, :parent_id
   validates :slug, uniqueness: true, presence: true
 
   before_validation :generate_slug
 
-  has_ancestry
-  has_many :firms
 
 
   def to_param

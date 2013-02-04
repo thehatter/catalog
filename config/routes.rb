@@ -1,18 +1,6 @@
 Catalog::Application.routes.draw do
   devise_for :users
 
-  # resources :categories, :path => "/" do
-  #   resources :firms
-  # end
-
-  # resources :categories, only: [:index, :new, :create]
-  # resources :categories, path: "/", except: [:index, :new, :create] do
-  #   resources :firms, except: [:new, :create]
-  # end
-
-  # get '*id', to: 'categories#show'
-  
-  # resources :firms, :only => [:new, :create]
 
 
   get "firms", :to => "firms#index"
@@ -21,22 +9,7 @@ Catalog::Application.routes.draw do
   resources :firms, :except => [:show, :index]
   resources :categories, path: "/"
 
-  get ":category_id/:id", :to => "firms#show", :as => :show_firm
-
-
-
-
-
-  # get "*id", :to => "firms#show"
-
-  # get ":category_id/*categories/:firm_id", :to => "firms#show", :as => :category_firm_path
-
-
-
-  # match "firm_new" => "firms#new"
-
-  # get ":category_id/*categories/:firm_id", :to => "firms#show"
-
+  get ":category_id/:id", :to => "firms#show", :as => :show_firm   #weight -100500
 
 
 

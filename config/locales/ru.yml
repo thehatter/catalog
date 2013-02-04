@@ -1,3 +1,10 @@
 ru:
   Login: "Войти"
   Sign up: "Зарегистрироваться"
+
+  phone:
+    number_types:
+      mts: "МТС"
+      velcom: "Velcom"
+      life: "Life"
+      city: "Городской"
