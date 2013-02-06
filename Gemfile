@@ -9,7 +9,7 @@ gem 'ancestry'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'simple_form'
-gem "cocoon"
+gem 'cocoon', :git => 'https://github.com/nathanvda/cocoon'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

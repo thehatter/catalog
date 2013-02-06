@@ -1,6 +1,6 @@
-<%= form_for(@firm) do |f| %>
+<%= simple_form_for (@firm), :wrapper => 'bootstrap' do |f| %>
 
-  <p><%= f.label "Название фирмы" %>
+  <p class="inline"><%= f.label "Название фирмы" %>
   <%= f.text_field :name %></p>
 
   <div><%= f.label "Краткое описание фирмы" %>
@@ -29,11 +29,13 @@
   <% end %>
 
 
-  <%= f.fields_for :addresses do |address| %>
+  <%= f.fields_for :addresses , :wrapper => 'bootstrap'  do |address| %>
       <%= render 'address_fields', :f => address  %>
   <% end %>
 
-  <%= link_to_add_association 'add address', f, :addresses %>
+<div>
+  <%= link_to_add_association 'add address', f, :addresses, :render_options => {:wrapper => 'bootstrap' } %>
+</div>
 
   <fieldset>
     <legend>Картинка фирмы</legend>

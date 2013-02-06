@@ -6,6 +6,20 @@
   <%= @firm.description %>
 </p>
 
+<ul>
+<% @phones.each do |phone| %>
+  <li><%= phone.number %></li>
+<% end %>
+</ul>
+
+<br><br>
+
+<ul>
+<% @addresses.each do |addresses| %>
+  <li><%= addresses.line_1 %></li>
+<% end %>
+</ul>
+
 <%= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar_url %>
 
 <%= link_to 'Edit', edit_firm_path %> |

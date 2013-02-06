@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/nathanvda/cocoon
+  revision: d4f59eb5eb0dce54c47935459e44b84f6bbcf2e1
+  specs:
+    cocoon (1.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,7 +53,6 @@ GEM
       activesupport (>= 3.2.0)
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
-    cocoon (1.1.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -190,7 +195,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   carrierwave
-  cocoon
+  cocoon!
   coffee-rails
   cucumber-rails
   database_cleaner
