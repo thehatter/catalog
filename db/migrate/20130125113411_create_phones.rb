@@ -4,6 +4,9 @@ class CreatePhones < ActiveRecord::Migration
       t.string :number
       t.string :number_type
 
+      t.integer :firm_id
+      t.index :firm_id
+
       t.timestamps
     end
   end

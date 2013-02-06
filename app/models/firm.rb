@@ -2,14 +2,16 @@
 #
 # Table name: firms
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  slug        :string(255)
-#  category_id :integer
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  description       :text
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  slug              :string(255)
+#  category_id       :integer
+#  favatar           :string(255)
+#  short_description :text
 #
 
 class Firm < ActiveRecord::Base
@@ -19,13 +21,18 @@ class Firm < ActiveRecord::Base
   belongs_to :category
 
   has_many :phones
+  has_many :addresses
+
   accepts_nested_attributes_for :phones, 
                                 reject_if: 
                                 lambda {|attributes| attributes['number'].blank?}
+  accepts_nested_attributes_for :addresses, 
+                                :reject_if => :all_blank, 
+                                :allow_destroy => true
 
-  attr_accessible :description, :name, :category_id, 
+  attr_accessible :short_description, :description, :name, :category_id, 
                   :favatar, :remote_favatar_url, :favatar_cache, :remove_favatar,
-                  :phones_attributes
+                  :phones_attributes, :addresses_attributes
 
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true

@@ -3,8 +3,14 @@
   <p><%= f.label "Название фирмы" %>
   <%= f.text_field :name %></p>
 
+  <div><%= f.label "Краткое описание фирмы" %>
+  <%= f.text_area :short_description, rows: "5"%></div>
+
+
   <div><%= f.label "Описание фирмы" %>
   <%= f.text_area :description, rows: "10"%></div>
+
+  
 
   <%= f.select :category_id, @categories%>
 
@@ -17,13 +23,20 @@
 
       <%= phones_form.label :number %>
       <%= phones_form.text_field :number %>
-      ...
       
     </li>
+
   <% end %>
 
+
+  <%= f.fields_for :addresses do |address| %>
+      <%= render 'address_fields', :f => address  %>
+  <% end %>
+
+  <%= link_to_add_association 'add address', f, :addresses %>
+
   <fieldset>
-    <legend>Аватар</legend>
+    <legend>Картинка фирмы</legend>
     <p>
       <%= image_tag(@firm.favatar_url) if @firm.favatar? %>
       <% unless @firm.new_record? %>
@@ -32,15 +45,11 @@
       <% end %>
     </p>
     <p>
-      <%= f.label :favatar, "Upload local file:" %><br />
+      <%= f.label :favatar, "Загрузить картинку:" %><br />
       <%= f.file_field :favatar %>
       <%= f.hidden_field :favatar_cache %>
     </p>
-    <p><em>…or…</em></p>
-    <p>
-      <%= f.label :remote_favatar_url, "Download remote file:" %><br />
-      <%= f.text_field :remote_favatar_url %>
-    </p>
+
   </fieldset>
 
   <div><%= f.submit "Сохранить фирму", class: "btn btn-large btn-primary" %></div>

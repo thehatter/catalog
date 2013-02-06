@@ -9,7 +9,6 @@
     <small class=""><%= firm.user_id  %></small><br/><br/>
     <small class=""><%= firm.category_id  %></small>
     
-
     <% if user_signed_in? %>
       <% if current_user?(firm.user) || current_user.admin? %>
         <div class="btn-group pull-right a_indent-top5px">

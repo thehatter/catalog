@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125142025) do
+ActiveRecord::Schema.define(:version => 20130205141739) do
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "firm_id"
+    t.string   "line_1"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "addresses", ["firm_id"], :name => "index_addresses_on_firm_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -28,11 +37,12 @@ ActiveRecord::Schema.define(:version => 20130125142025) do
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "slug"
     t.integer  "category_id"
     t.string   "favatar"
+    t.text     "short_description"
   end
 
   add_index "firms", ["category_id"], :name => "index_firms_on_category_id"
