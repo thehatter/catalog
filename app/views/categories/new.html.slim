@@ -1,0 +1,11 @@
+= form_for(@category) do |f|
+  = f.hidden_field :parent_id
+
+  p.panel 
+    = f.label "Название категории"
+    = f.text_field :name
+ 
+    = f.label "Адрес"
+    = f.text_field :url
+
+  = f.submit "Создать категорию", class: "success button"

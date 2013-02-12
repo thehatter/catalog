@@ -1,7 +1,7 @@
-<div class="well well-small clearfix">
+<div class="panel clearfix">
   <% if user_signed_in? %>
     <% if current_user.admin? %>
-      <%= link_to 'Создать категорию', new_category_path, class: "btn btn-primary btn-large" %>
+      <%= link_to 'Создать категорию', new_category_path, class: "secondary button" %>
     <% end %>
   <% end %>
 </div>

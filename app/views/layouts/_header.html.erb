@@ -1,21 +1,41 @@
-<header class="heder navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-    <%= link_to "Каталог фирм", root_path, id: "logo", class: "brand" %>
-    
-      <div id="user_nav" class="nav pull-right">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.username %></strong>.
-          <%= link_to 'Создать фирму', new_firm_path %>
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to t("Sign up"), new_user_registration_path %> |
-          <%= link_to t("Login"), new_user_session_path %>
-        <% end %>
-      </div>
+<header>
+  <div class="row2">
+    <nav class="top-bar">
+      <ul>
+        <!-- Title Area -->
+        <li class="name">
+          <h1>
+            <%= link_to "Каталог фирм", root_path, id: "logo", class: "name" %>
+          </h1>
+        </li>
+        <li class="toggle-topbar"><a href="#"></a></li>
+      </ul>
 
-    </div>
+      <section>
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider show-for-medium-and-up"></li>
+          <li><%= link_to '+ Добавить фирму', new_firm_path %></li>
+          <li class="divider show-for-medium-and-up"></li>
+          <% if user_signed_in? %>
+            <li class="has-dropdown">
+              <a href="#"><%= current_user.username %></a>
+              <ul class="dropdown">
+                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                </ul>
+            </li>
+
+
+          <% else %>
+            <li><%= link_to t("Sign up"), new_user_registration_path %></li>
+            <li><%= link_to t("Login"), new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
   </div>
-  
+</div>
 </header>

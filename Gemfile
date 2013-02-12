@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'devise'
 gem 'russian'
@@ -31,6 +30,9 @@ group :assets do
   gem 'coffee-rails'
   gem "slim-rails"
   gem 'jquery-rails'
+  
+  gem 'compass-rails'
+  gem 'zurb-foundation'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

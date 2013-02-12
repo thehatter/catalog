@@ -5,9 +5,9 @@
 #  id          :integer          not null, primary key
 #  number      :string(255)
 #  number_type :string(255)
+#  firm_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  firm_id     :string(255)
 #
 
 class Phone < ActiveRecord::Base
