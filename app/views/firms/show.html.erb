@@ -20,6 +20,13 @@
 <% end %>
 </ul>
 
+<ul>
+<% @galleries.each do |gallery| %>
+
+  <li><%= image_tag(gallery.image_url) %></li>
+<% end %>
+</ul>
+
 <%= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar_url %>
 
 <%= link_to 'Edit', edit_firm_path %> |

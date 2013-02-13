@@ -22,6 +22,7 @@ class Firm < ActiveRecord::Base
 
   has_many :phones
   has_many :addresses
+  has_many :galleries
 
   accepts_nested_attributes_for :phones, 
                                 reject_if: 
@@ -29,10 +30,14 @@ class Firm < ActiveRecord::Base
   accepts_nested_attributes_for :addresses, 
                                 :reject_if => :all_blank, 
                                 :allow_destroy => true
+  accepts_nested_attributes_for :galleries, 
+                                :reject_if => :all_blank, 
+                                :allow_destroy => true
+
 
   attr_accessible :short_description, :description, :name, :category_id, 
                   :favatar, :remote_favatar_url, :favatar_cache, :remove_favatar,
-                  :phones_attributes, :addresses_attributes
+                  :phones_attributes, :addresses_attributes, :galleries_attributes
 
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true

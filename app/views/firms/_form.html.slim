@@ -1,0 +1,59 @@
+= form_for(@firm) do |f|
+
+  p.inline
+    = f.label "Название фирмы"
+    = f.text_field :name
+
+  .short_description 
+    = f.label "Краткое описание фирмы"
+    = f.text_area :short_description, rows: "5"
+
+
+  .description 
+    = f.label "Описание фирмы"
+    = f.text_area :description, rows: "10"
+
+  
+
+  = f.select :category_id, @categories
+
+
+  = f.fields_for :phones do |phones_form|
+    li
+      = phones_form.select(:number_type, options_for_select(phone_number_type_select_options, phones_form.object.number_type))
+
+      = phones_form.label :number
+      = phones_form.text_field :number
+
+
+  .addr_fields
+    = f.fields_for :addresses  do |address|
+      = render 'address_fields', :f => address
+
+    .addr_fields_b
+      = link_to_add_association 'add address', f, :addresses
+
+
+  fieldset.image
+    legend Картинка фирмы
+    p
+      = image_tag(@firm.favatar_url) if @firm.favatar?
+      - unless @firm.new_record?
+        = f.check_box :remove_favatar
+        = f.label :remove_favatar, "remove favatar"
+
+    p
+      = f.label :favatar, "Загрузить картинку:"
+      = f.file_field :favatar
+      = f.hidden_field :favatar_cache
+
+
+  .gallery_fields
+
+    = f.fields_for :galleries  do |gallery|
+      = render 'gallery_fields', :f => gallery
+
+    .gallery_fields_b
+      = link_to_add_association 'add image', f, :galleries, class: "button"
+
+  = f.submit "Сохранить фирму", class: "button"

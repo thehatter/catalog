@@ -1,0 +1,17 @@
+.nested-fields
+  .field
+    = f.label :title
+    = f.text_field :title
+
+    fieldset.image
+      legend Картинка
+      p
+        = image_tag(f.object.image_url) if f.object.image?
+
+      p
+        = f.label :image, "Загрузить картинку:"
+        = f.file_field :image
+        = f.hidden_field :image_cache
+
+
+  = link_to_remove_association "remove image", f

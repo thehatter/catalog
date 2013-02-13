@@ -18,6 +18,7 @@ class FirmsController < ApplicationController
   def show
     @phones = @firm.phones
     @addresses = @firm.addresses
+    @galleries = @firm.galleries
   end
 
   def new
