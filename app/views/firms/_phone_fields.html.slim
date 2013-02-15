@@ -1,0 +1,9 @@
+.nested-fields
+  .field
+    = f.select(:number_type, options_for_select(phone_number_type_select_options, f.object.number_type))
+
+    = f.label :number
+    = f.text_field :number
+
+
+  = link_to_remove_association "remove address", f, class: "alert button"

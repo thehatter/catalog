@@ -23,13 +23,13 @@ class FirmsController < ApplicationController
 
   def new
     @firm = Firm.new
-    3.times { @firm.phones.build}
+    #3.times { @firm.phones.build}
     @categories = ancestry_options(Category.at_depth(1).scoped.arrange(:order => 'name')) {|i| "#{'-' * i.depth} #{i.name}" }
   end
 
   def edit
     @categories = ancestry_options(Category.scoped.arrange(:order => 'name')) {|i| "#{'-' * i.depth} #{i.name}" }
-    3.times { @firm.phones.build}
+    #3.times { @firm.phones.build}
   end
 
   def create

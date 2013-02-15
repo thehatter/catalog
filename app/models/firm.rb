@@ -24,9 +24,11 @@ class Firm < ActiveRecord::Base
   has_many :addresses
   has_many :galleries
 
-  accepts_nested_attributes_for :phones, 
-                                reject_if: 
-                                lambda {|attributes| attributes['number'].blank?}
+  accepts_nested_attributes_for :phones,
+                                :reject_if => :all_blank, 
+                                :allow_destroy => true
+                                #reject_if: 
+                                #lambda {|attributes| attributes['number'].blank?}
   accepts_nested_attributes_for :addresses, 
                                 :reject_if => :all_blank, 
                                 :allow_destroy => true

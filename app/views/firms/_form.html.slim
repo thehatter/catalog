@@ -1,3 +1,4 @@
+
 = form_for(@firm) do |f|
 
   p.inline
@@ -18,12 +19,12 @@
   = f.select :category_id, @categories
 
 
-  = f.fields_for :phones do |phones_form|
-    li
-      = phones_form.select(:number_type, options_for_select(phone_number_type_select_options, phones_form.object.number_type))
+  .phones_fields
+    = f.fields_for :phones  do |address|
+      = render 'phone_fields', :f => address
 
-      = phones_form.label :number
-      = phones_form.text_field :number
+    .addr_fields_b
+      = link_to_add_association 'add phone', f, :phones, class: "button"
 
 
   .addr_fields
@@ -31,7 +32,7 @@
       = render 'address_fields', :f => address
 
     .addr_fields_b
-      = link_to_add_association 'add address', f, :addresses
+      = link_to_add_association 'add address', f, :addresses, class: "button"
 
 
   fieldset.image

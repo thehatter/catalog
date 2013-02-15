@@ -23,7 +23,7 @@
 <ul>
 <% @galleries.each do |gallery| %>
 
-  <li><%= image_tag(gallery.image_url) %></li>
+  <li><%= image_tag(gallery.image_url(:thumb)) %></li>
 <% end %>
 </ul>
 

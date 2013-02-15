@@ -26,10 +26,12 @@
 </head>
     <%= render 'layouts/header' %>
     <div class="container row">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+      <div class="twelve columns">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert-box #{key}") %>
+        <% end %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
     </div>
 </html>
