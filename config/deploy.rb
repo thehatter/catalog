@@ -17,7 +17,7 @@ set :user, "andrew"
 set :user_rails, "andrew"
  
 # App Domain
-set :domain, "andrew@catalog.178.124.130.11"
+set :domain, "andrew@178.124.130.11"
 
 # We don't want to use sudo (root) - for security reasons
 set :use_sudo, false
@@ -43,7 +43,7 @@ set :branch, "master"
 
 # Deploy via github
 set :deploy_via, :remote_cache
-set :deploy_to, "/home/andrew/#{application}"
+set :deploy_to, "/home/andrew/apps/#{application}"
 
 
 role :web, domain
@@ -71,14 +71,13 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 namespace :deploy do
 
   task :restart do
-      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
-    end
-    task :start do
-      run "bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D"
-    end
-    task :stop do
-      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
-    end
+    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
+  end
+  task :start do
+    run "bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D"
+  end
+  task :stop do
+    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
 
  # Precompile assets only when needed
@@ -99,7 +98,6 @@ namespace :deploy do
   end
 
 end
-
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

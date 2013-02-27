@@ -6,7 +6,7 @@ gem 'devise'
 gem 'russian'
 gem 'ancestry'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'simple_form'
 gem 'cocoon', :git => 'https://github.com/nathanvda/cocoon'
 
