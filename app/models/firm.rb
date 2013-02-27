@@ -22,7 +22,7 @@ class Firm < ActiveRecord::Base
 
   has_many :phones
   has_many :addresses
-  has_many :galleries
+  has_many :galleries, :order => 'weight'
 
   accepts_nested_attributes_for :phones,
                                 :reject_if => :all_blank, 

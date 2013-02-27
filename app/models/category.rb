@@ -5,6 +5,7 @@
 #  id             :integer          not null, primary key
 #  name           :string(255)
 #  url            :string(255)
+#  weight         :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  ancestry       :string(255)
@@ -17,7 +18,7 @@ class Category < ActiveRecord::Base
   has_ancestry :cache_depth => true
   has_many :firms
 
-  attr_accessible :name, :parent_id, :ancestry_depth, :url
+  attr_accessible :name, :parent_id, :ancestry_depth, :url, :weight
   validates :slug, uniqueness: true, presence: true
 
   before_validation :generate_slug

@@ -4,4 +4,4 @@
       = link_to 'Создать категорию', new_category_path, class: "secondary button"
 
 
-= nested_categories @categories.arrange(:order => :created_at)
+= nested_categories @categories.arrange(:order => :weight)

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130212111404) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "url"
+    t.integer  "weight"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "ancestry"
