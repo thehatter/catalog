@@ -10,18 +10,29 @@ gem 'rmagick'
 gem 'simple_form'
 gem 'cocoon', :git => 'https://github.com/nathanvda/cocoon'
 
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.12.2'
+
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+
   # gem 'diff-lcs', '~> 1.1.2'
 
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'  
   # gem 'spork', '0.9.2'
 end
+
+group :production do
+  gem 'unicorn'
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.
