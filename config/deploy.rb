@@ -11,7 +11,7 @@ require "rvm/capistrano"
 # Application name
 set :application, "catalog"
 
-#set :rvm_path, "$HOME/.rvm/bin/rvm"
+set :rvm_path, "$HOME/.rvm/bin/rvm-shell"
 
 # Deploy username and sudo username
 set :user, "andrew"
@@ -96,9 +96,9 @@ namespace :deploy do
   end
 
 
-#  task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
-#    run "#{rvm_path} rvm use #{rvm_ruby_string} --default"
-#  end
+  task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
+    run "#{rvm_path} use #{rvm_ruby_string} --default"
+  end
 
  # Precompile assets only when needed
   namespace :assets do
