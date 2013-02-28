@@ -57,6 +57,8 @@ server domain, :app, :web, :db, :primary => true
 before "deploy:setup", "rvm:install_rvm"
 before "deploy:setup", "rvm:install_ruby"
  
+# Apply default RVM version for the current account
+after "deploy:setup", "deploy:set_rvm_version"
 
 
 # Apply default RVM version for the current account
@@ -69,15 +71,32 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 
 namespace :deploy do
+  
+  task :start, :roles => :app, :except => { :no_release => true } do
+    # Start unicorn server using sudo (rails)
+    run "cd #{current_path} && #{unicorn_binary}"
+  end
+ 
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "if [ -f #{unicorn_pid} ]; then kill `cat #{unicorn_pid}`; fi"
+  end
+ 
+  task :graceful_stop, :roles => :app, :except => { :no_release => true } do
+    run "if [ -f #{unicorn_pid} ]; then kill -s QUIT `cat #{unicorn_pid}`; fi"
+  end
+ 
+  task :reload, :roles => :app, :except => { :no_release => true } do
+    run "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+  end
+ 
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    stop
+    start
+  end
 
-  task :restart do
-    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
-  end
-  task :start do
-    run "bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D"
-  end
-  task :stop do
-    run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+
+  task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
+    run "source /etc/profile.d/rvm.sh && rvm use #{rvm_ruby_string} --default"
   end
 
  # Precompile assets only when needed
