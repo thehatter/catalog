@@ -24,7 +24,7 @@ set :use_sudo, false
 
 
 # Target ruby version
-set :rvm_ruby_string, 'ruby-1.9.3-p392@catalog'
+set :rvm_ruby_string, 'ruby-1.9.3-p392'
 
 
 # RVM installation
