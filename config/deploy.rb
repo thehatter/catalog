@@ -96,7 +96,7 @@ namespace :deploy do
 
 
   task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
-    run "$HOME/.rvm/bin/rvm-shell rvm use #{rvm_ruby_string} --default"
+    run "$HOME/.rvm/bin/rvm-shell use #{rvm_ruby_string} --default"
   end
 
  # Precompile assets only when needed
