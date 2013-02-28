@@ -60,6 +60,9 @@ before "deploy:setup", "rvm:install_ruby"
 # Apply default RVM version for the current account
 after "deploy:setup", "deploy:set_rvm_version"
 
+
+# Fix log/ and pids/ permissions
+after "deploy:setup", "deploy:fix_setup_permissions"
  
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
@@ -91,6 +94,11 @@ namespace :deploy do
     start
   end
 
+
+  task :fix_setup_permissions, :roles => :app, :except => { :no_release => true } do
+    run "chgrp #{user_rails} #{shared_path}/log"
+    run "chgrp #{user_rails} #{shared_path}/pids"
+  end
 
   task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
     run "$HOME/.rvm/bin/rvm-shell use #{rvm_ruby_string} --default"
