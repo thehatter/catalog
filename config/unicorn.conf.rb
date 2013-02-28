@@ -14,6 +14,7 @@ worker_processes 4
 
 # App location
 @app = "/home/andrew/apps/catalog/current"
+@app_shared = "/home/andrew/apps/catalog/shared"
 
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
@@ -40,8 +41,8 @@ pid "#{@app}/shared/pids/unicorn.pid"
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "#{@app}/shared/log/unicorn.stderr.log"
-stdout_path "#{@app}/shared/log/unicorn.stdout.log"
+stderr_path "#{@app_shared}/log/unicorn.stderr.log"
+stdout_path "#{@app_sharedp}/log/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
