@@ -60,13 +60,10 @@ before "deploy:setup", "rvm:install_ruby"
 # Apply default RVM version for the current account
 after "deploy:setup", "deploy:set_rvm_version"
 
-
-# Apply default RVM version for the current account
-after "deploy:setup", "deploy:set_rvm_version"
  
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
-set :unicorn_binary, "bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
+set :unicorn_binary, "bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D"
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 
