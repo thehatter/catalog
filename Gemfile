@@ -11,7 +11,8 @@ gem 'simple_form'
 gem 'cocoon', :git => 'https://github.com/nathanvda/cocoon'
 gem 'therubyracer'
 
-
+gem 'slim-rails'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,8 +42,6 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem "slim-rails"
-  gem 'jquery-rails'
   
   gem 'compass-rails'
   gem 'zurb-foundation'
