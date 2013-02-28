@@ -58,7 +58,7 @@ before "deploy:setup", "rvm:install_rvm"
 before "deploy:setup", "rvm:install_ruby"
  
 # Apply default RVM version for the current account
-after "deploy:setup", "deploy:set_rvm_version"
+#after "deploy:setup", "deploy:set_rvm_version"
 
 
 # Fix log/ and pids/ permissions
@@ -100,9 +100,9 @@ namespace :deploy do
     run "chgrp #{user_rails} #{shared_path}/pids"
   end
 
-  task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
-    run "$HOME/.rvm/bin/rvm-shell use #{rvm_ruby_string} --default"
-  end
+#  task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
+#    run "$HOME/.rvm/bin/rvm-shell use #{rvm_ruby_string} --default"
+ # end
 
  # Precompile assets only when needed
   namespace :assets do
