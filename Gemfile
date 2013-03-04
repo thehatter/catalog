@@ -25,7 +25,6 @@ group :development, :test do
   gem 'rvm-capistrano'
 
   # gem 'diff-lcs', '~> 1.1.2'
-
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'  
   # gem 'spork', '0.9.2'
