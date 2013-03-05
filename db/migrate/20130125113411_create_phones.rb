@@ -4,10 +4,10 @@ class CreatePhones < ActiveRecord::Migration
       t.string :number
       t.string :number_type
 
-      t.integer :firm_id
+      t.integer :address_id
 
       t.timestamps
     end
-      add_index :phones, :firm_id
+      add_index :phones, :address_id
   end
 end

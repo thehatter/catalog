@@ -10,8 +10,17 @@
 #
 
 class Address < ActiveRecord::Base
-  belongs_to :firm
 
-  attr_accessible :firm_id, :line_1
+
+  belongs_to :firm
+  has_many :phones
+
+  accepts_nested_attributes_for :phones,
+                                :reject_if => :all_blank, 
+                                :allow_destroy => true
+                                #reject_if: 
+                                #lambda {|attributes| attributes['number'].blank?}
+
+  attr_accessible :firm_id, :line_1, :phones_attributes
 
 end

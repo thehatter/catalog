@@ -19,14 +19,6 @@
   = f.select :category_id, @categories
 
 
-  .phones_fields
-    = f.fields_for :phones  do |address|
-      = render 'phone_fields', :f => address
-
-    .addr_fields_b
-      = link_to_add_association 'add phone', f, :phones, class: "button"
-
-
   .addr_fields
     = f.fields_for :addresses  do |address|
       = render 'address_fields', :f => address

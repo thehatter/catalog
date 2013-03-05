@@ -20,26 +20,18 @@ class Firm < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  has_many :phones
   has_many :addresses
   has_many :galleries, :order => 'weight'
 
-  accepts_nested_attributes_for :phones,
-                                :reject_if => :all_blank, 
-                                :allow_destroy => true
-                                #reject_if: 
-                                #lambda {|attributes| attributes['number'].blank?}
-  accepts_nested_attributes_for :addresses, 
-                                :reject_if => :all_blank, 
-                                :allow_destroy => true
-  accepts_nested_attributes_for :galleries, 
-                                :reject_if => :all_blank, 
-                                :allow_destroy => true
 
+  with_options :reject_if => :all_blank, :allow_destroy => true do |model|
+    model.accepts_nested_attributes_for :addresses
+    model.accepts_nested_attributes_for :galleries
+  end
 
   attr_accessible :short_description, :description, :name, :category_id, 
                   :favatar, :remote_favatar_url, :favatar_cache, :remove_favatar,
-                  :phones_attributes, :addresses_attributes, :galleries_attributes
+                  :addresses_attributes, :galleries_attributes
 
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true

@@ -6,17 +6,17 @@
   <%= @firm.description %>
 </p>
 
-<ul>
-<% @phones.each do |phone| %>
-  <li><%= phone.number %></li>
-<% end %>
-</ul>
 
 <br><br>
 
 <ul>
 <% @addresses.each do |addresses| %>
   <li><%= addresses.line_1 %></li>
+    <ul>
+    <% addresses.phones.each do |phone| %>
+      <li><%= phone.number %></li>
+    <% end %>
+    </ul>
 <% end %>
 </ul>
 

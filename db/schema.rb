@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(:version => 20130212111404) do
   create_table "phones", :force => true do |t|
     t.string   "number"
     t.string   "number_type"
-    t.integer  "firm_id"
+    t.integer  "address_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "phones", ["firm_id"], :name => "index_phones_on_firm_id"
+  add_index "phones", ["address_id"], :name => "index_phones_on_address_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  number      :string(255)
 #  number_type :string(255)
-#  firm_id     :integer
+#  address_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

@@ -3,4 +3,12 @@
     = f.label :line_1
     = f.text_field :line_1
 
+  .phones_fields
+    = f.fields_for :phones, :wrapper => 'inline' do |phone|
+      = render 'phone_fields', :f => phone
+
+    .phone_fields_b
+      = link_to_add_association 'add phone', f, :phones, class: "button"
+
+
   = link_to_remove_association "remove address", f, class: "alert button"
