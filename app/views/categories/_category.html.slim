@@ -1,20 +1,22 @@
-div class="category #{category.id}"
+.category_item
 
-  .panel.clearfix
+  .clearfix.in
 
 
     - if category.depth >= 1
-      h3
+      div
         = link_to category.name, category_path(category)
     - else
-      h3
+      div
         = category.name
 
+    .admin_buttons
 
-    - if category.depth < 1
-      = link_to "Новая подкатегория", new_category_path(:parent_id => category.id), class: "radius secondary button"
+      - if user_signed_in? && current_user.admin?
+        - if category.depth < 1
+          = link_to "Новая подкатегория", new_category_path(:parent_id => category.id), class: "radius secondary button"
 
 
 
-    = link_to 'edit',  edit_category_path(category), class: "button"
-    = link_to 'delete', category_path(category), method: :delete, data: { confirm: "You sure?" }, class: "alert button"
+        = link_to 'edit',  edit_category_path(category), class: "button"
+        = link_to 'delete', category_path(category), method: :delete, data: { confirm: "You sure?" }, class: "alert button"

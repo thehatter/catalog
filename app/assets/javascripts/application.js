@@ -15,3 +15,5 @@
 //= require foundation
 //= require_tree .
 //= require cocoon
+
+$(document).foundation();
