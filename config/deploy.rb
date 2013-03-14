@@ -94,6 +94,10 @@ namespace :deploy do
     start
   end
 
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
+
 
   task :fix_setup_permissions, :roles => :app, :except => { :no_release => true } do
     run "chgrp #{user_rails} #{shared_path}/log"
