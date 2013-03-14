@@ -36,7 +36,7 @@ set :rvm_type, :user
 set :scm, :git
 
 # Use github repository
-set :repository,  "git://github.com/thehatter/catalog"
+set :repository,  "git://github.com/thehatter/catalog.git"
 
 # master is our default git branch
 set :branch, "master"
