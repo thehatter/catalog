@@ -6,19 +6,26 @@
 .category_container {
 
   .category_item {
-    background: -moz-linear-gradient(top,  rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.19) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.02)), color-stop(100%,rgba(0,0,0,0.19))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.02) 0%,rgba(0,0,0,0.19) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(0,0,0,0.02) 0%,rgba(0,0,0,0.19) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(0,0,0,0.02) 0%,rgba(0,0,0,0.19) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(0,0,0,0.02) 0%,rgba(0,0,0,0.19) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05000000', endColorstr='#30000000',GradientType=0 ); /* IE6-9 */
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 
     border-bottom: 1px solid #ccc;
+    cursor: pointer;
 
-    .in {
+    .item_in {
       background: url(cat_icon_1.png) 8px center no-repeat;
-      padding: 20px 20px 20px 48px;
+      
+      .item_in2 {
+        padding: 20px 20px 20px 48px;
+        margin: 0 14px 0 0;
+        background: url(cat_arrow.png) right center no-repeat;
+      }
     }
 
     .admin_buttons {
@@ -27,13 +34,23 @@
 
   }
 
+  .category_item.active .item_in2 {
+    background: url(cat_arrow_d.png) right center no-repeat;
+  }
+
+
   .nested_categories {
+    display: none;
+    
     .category_item {
       background: none;
 
-      .in {
+      .item_in {
         background: none;
-        padding: 20px;
+
+        .item_in2 {
+          padding: 20px;
+        }
       }
     }
 

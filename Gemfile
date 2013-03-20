@@ -19,7 +19,7 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.12.2'
+  gem 'rspec-rails', '2.13'
 
   gem 'capistrano'
   gem 'rvm-capistrano'

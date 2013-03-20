@@ -3,5 +3,5 @@
     .panel.clearfix
       = link_to 'Создать категорию', new_category_path, class: "secondary button"
 
-#accordion
-  = nested_categories @categories.arrange(:order => :weight)
+
+= nested_categories @categories.arrange(:order => :weight)
