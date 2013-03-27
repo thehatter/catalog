@@ -4,6 +4,8 @@ div[class="category_item #{'first_level_item' if category.depth < 1}"]
     .item_in2
 
       - if category.depth >= 1
+        span
+          = category.firms_count
         = link_to category.name, category_path(category)
       - else
         = category.name

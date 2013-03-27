@@ -18,7 +18,7 @@ class Firm < ActiveRecord::Base
   before_validation :generate_slug
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, :counter_cache => true
 
   has_many :addresses
   has_many :galleries, :order => 'weight'

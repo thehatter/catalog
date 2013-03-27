@@ -1,0 +1,95 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require foundation_and_overrides
+ *= require_tree .
+ */
+
+@import "displays";
+
+#container {
+  position: relative;
+  padding: 10px 0 0 0;
+}
+
+#content {
+  float: left;
+}
+
+.ad_bar {
+  float: right;
+  display: none;
+}
+
+
+
+
+/* We use this media query to add styles to any device that supports media queries */
+@media #{$screen} { }
+
+/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */
+@media #{$small} { }
+
+/* Used to alter styles for screens at least 1280px wide. */
+@media #{$medium} {
+
+  #container {
+    position: relative;
+    padding: 10px 420px 0 0;
+  }
+
+  #content {
+    float: none;
+    margin: 0 16px 0 318px;
+  }
+ 
+  .catalog_bar {
+    position: absolute;
+    top:0px; left: 0px;
+    width: 300px;
+    float: left;
+    z-index: 100;
+  }
+
+  .categories-index .catalog_bar {
+    position: relative;
+    width: 100%; 
+  }
+
+  .categories-index #content {
+    float: left;
+    margin: 10px;
+  }
+
+  .ad_bar {
+    display: block;
+    position: absolute;
+    right:0px; top:0px;
+    width: 420px;
+    min-height: 1000px;
+    background: #ccc;
+  }
+
+}
+
+/* Used to alter styles for screens at least 1440px wide. */
+@media #{$large} { }
+
+/* Apply styles to screens in landscape orientation */
+@media #{$landscape} { }
+
+/* Apply styles to screens in portrait orientation */
+@media #{$portrait} { }
+
+/* We also use Modernizr to add a .touch class to the body when applicable */
+/* You can prepend this class to anything and it will style only for touch devices */
+.touch .your-element { }
+

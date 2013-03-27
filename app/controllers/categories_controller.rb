@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
   before_filter :category, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.scoped
   end
 
 

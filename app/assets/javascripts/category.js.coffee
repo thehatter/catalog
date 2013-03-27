@@ -7,11 +7,44 @@ $ ->
   firstLevelItems = $('.category_container > .category_item.first_level_item')
 
   firstLevelItems.click ->
-    if !($(this).hasClass('active'))
-      firstLevelItems.removeClass('active')
-      allPanels.slideUp()
-      $(this).next('.nested_categories').slideDown()
-      $(this).addClass('active')
+    if (($(document).width()) < 1280) || !($('body').hasClass('categories-index'))
+      if !($(this).hasClass('active'))
+        firstLevelItems.removeClass('active')
+        allPanels.slideUp()
+        $(this).next('.nested_categories').slideDown()
+        $(this).addClass('active')
+      else
+        allPanels.slideUp()
+        firstLevelItems.removeClass('active')
+
+
+
+
+
+  itemSelector_opt = $('.category_container').has(".category_item.first_level_item")
+
+
+  if (($(document).width()) > 1280) && ($('body').hasClass('categories-index'))
+    $('.catalog_bar').masonry({
+      itemSelector : itemSelector_opt,
+      columnWidth : 240,
+      isAnimated: true
+    })
+
+  $(window).resize ->
+    if (($(document).width()) > 1280) && ($('body').hasClass('categories-index'))
+      $('.catalog_bar').masonry({
+        itemSelector : itemSelector_opt,
+        columnWidth : 240,
+        isAnimated: true
+      })
     else
-      allPanels.slideUp()
-      firstLevelItems.removeClass('active')
+      $('.catalog_bar').masonry('destroy')
+
+
+
+
+
+
+
+

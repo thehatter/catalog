@@ -19,7 +19,11 @@ class Category < ActiveRecord::Base
   has_many :firms
 
   attr_accessible :name, :parent_id, :ancestry_depth, :url, :weight
+  
+  validates :name, uniqueness: true, presence: true
   validates :slug, uniqueness: true, presence: true
+  validates :url, uniqueness: true, presence: true
+
 
   before_validation :generate_slug
 

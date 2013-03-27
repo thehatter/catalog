@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "displays";
 
 .category_container {
 
@@ -21,11 +22,18 @@
     .item_in {
       background: url(cat_icon_1.png) 8px center no-repeat;
       
-      .item_in2 {
-        padding: 20px 20px 20px 48px;
-        margin: 0 14px 0 0;
-        background: url(cat_arrow.png) right center no-repeat;
+    .item_in2 {
+      padding: 20px 20px 20px 48px;
+      margin: 0 14px 0 0;
+      background: url(cat_arrow.png) right center no-repeat;
+
+      span {
+        margin: 0 8px 0 0;
+        font-size: 0.89em;
+        color: #999;
       }
+    }
+
     }
 
     .admin_buttons {
@@ -38,7 +46,6 @@
     background: url(cat_arrow_d.png) right center no-repeat;
   }
 
-
   .nested_categories {
     display: none;
     
@@ -49,13 +56,67 @@
         background: none;
 
         .item_in2 {
-          padding: 20px;
+          padding: 16px;
         }
       }
     }
-
-
   }
 
 }
 
+
+@media #{$medium} {
+  .categories-index {
+    .category_container {
+
+      width: 240px;
+      float: left;
+
+      .category_item {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        .item_in {
+          background: url(cat_icon_1.png) left center no-repeat;
+          
+        .item_in2 {
+          padding: 20px 20px 10px 40px;
+          margin: 0 14px 0 0;
+          background: none;
+        }
+
+        }
+
+        .admin_buttons {
+          display: none;
+        }
+
+      }
+
+      .category_item.active .item_in2 {
+        background: url(cat_arrow_d.png) right center no-repeat;
+      }
+
+      .nested_categories {
+        display: block;
+        
+        .category_item {
+          background: none;
+
+          .item_in {
+            background: none;
+
+            .item_in2 {
+              padding: 8px 10px 8px 20px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212111404) do
+ActiveRecord::Schema.define(:version => 20130324141142) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "firm_id"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(:version => 20130212111404) do
     t.string   "name"
     t.string   "url"
     t.integer  "weight"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "ancestry"
     t.string   "slug"
     t.integer  "ancestry_depth"
+    t.integer  "firms_count",    :default => 0
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
