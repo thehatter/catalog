@@ -26,8 +26,14 @@ class FavatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  process :resize_to_limit => [300, 300]
+
   version :thumb do
     process resize_to_fill: [100, 100]
+  end
+
+    version :thumb_200 do
+    process resize_to_fill: [200, 200]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

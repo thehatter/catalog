@@ -14,6 +14,8 @@ gem 'therubyracer'
 gem 'slim-rails'
 gem 'jquery-rails'
 
+gem 'ckeditor_rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

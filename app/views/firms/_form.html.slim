@@ -1,4 +1,3 @@
-
 = form_for(@firm) do |f|
 
   p.inline
@@ -12,11 +11,24 @@
 
   .description 
     = f.label "Описание фирмы"
-    = f.text_area :description, rows: "10"
+    = f.text_area :description, rows: "10", :class => 'ckeditor'
 
-  
+  fieldset
+    legend Категория
+    = f.select :category_id, @categories
 
-  = f.select :category_id, @categories
+  fieldset.image
+    legend Картинка фирмы
+    p
+      = image_tag(@firm.favatar_url(:thumb_200)) if @firm.favatar?
+      - unless @firm.new_record?
+        = f.check_box :remove_favatar
+        = f.label :remove_favatar, "remove favatar"
+
+    p
+      = f.label :favatar, "Загрузить картинку:"
+      = f.file_field :favatar
+      = f.hidden_field :favatar_cache
 
 
   .addr_fields
@@ -28,25 +40,17 @@
 
 
   fieldset.image
-    legend Картинка фирмы
-    p
-      = image_tag(@firm.favatar_url) if @firm.favatar?
-      - unless @firm.new_record?
-        = f.check_box :remove_favatar
-        = f.label :remove_favatar, "remove favatar"
 
-    p
-      = f.label :favatar, "Загрузить картинку:"
-      = f.file_field :favatar
-      = f.hidden_field :favatar_cache
+    legend = t(".gallery")
+
+    .gallery_fields
+
+      = f.fields_for :galleries  do |gallery|
+        = render 'gallery_fields', :f => gallery
+
+      .gallery_fields_b
+        = link_to_add_association t(".add_gallery_im"), f, :galleries, class: "button"
 
 
-  .gallery_fields
 
-    = f.fields_for :galleries  do |gallery|
-      = render 'gallery_fields', :f => gallery
-
-    .gallery_fields_b
-      = link_to_add_association 'add image', f, :galleries, class: "button"
-
-  = f.submit "Сохранить фирму", class: "button"
+  = f.submit t(".save_firm"), class: "button success"

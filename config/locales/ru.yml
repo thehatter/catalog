@@ -1,7 +1,6 @@
 ru:
   Login: "Войти"
   Sign up: "Зарегистрироваться"
-  New firm: "Новая фирма"
 
   phone:
     number_types:
@@ -9,3 +8,14 @@ ru:
       velcom: "Velcom"
       life: "Life"
       city: "Городской"
+
+
+  firms:
+    new:
+      new_firm: "Новая фирма"
+    edit:
+      edit_firm: "Редактировать фирму"
+    form:
+      add_gallery_im: "Добавить картинку"
+      gallery: "Галерея"
+      save_firm: "Сохранить фирму"

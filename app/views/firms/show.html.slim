@@ -1,0 +1,30 @@
+
+h3
+  = @firm.name
+
+p
+  = @firm.description.html_safe
+
+br
+
+ul
+  - @addresses.each do |addresses|
+    li = addresses.line_1
+    ul
+      - addresses.phones.each do |phone|
+        li = phone.number
+
+
+
+ul
+ - @galleries.each do |gallery|
+
+  li
+    = image_tag(gallery.image_url(:thumb))
+    = gallery.title
+
+
+= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar_url
+
+= link_to 'Edit', edit_firm_path
+= link_to 'Back', firms_path
