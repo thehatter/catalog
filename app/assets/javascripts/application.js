@@ -16,6 +16,6 @@
 //= require_tree .
 //= require cocoon
 //= require ckeditor-jquery
-//= require assets/jquery.masonry.min.js
+//= require jquery_masonry_min
 
 $(document).foundation();
