@@ -1,16 +1,17 @@
 h2 = category.name
 
 - @firms.each do |firm|
-  .well.well-small.clearfix
+  div[class="firm_c clearfix #{'with_img' if firm.favatar_url}"]
 
-    h3 = link_to firm.name, show_firm_path(@category, firm)
-
-    = image_tag(firm.favatar_url(:thumb), :class => "pull-right") if firm.favatar_url
+    h4 = link_to firm.name, show_firm_path(@category, firm)
 
     .clearfix = firm.short_description
+
+    = image_tag(firm.favatar_url(:thumb), :class => "firm_img") if firm.favatar_url
+
     
     -if user_signed_in?
       - if current_user?(firm.user) || current_user.admin?
-        .btn-group.pull-right.a_indent-top5px
-          = link_to 'edit',  edit_firm_path(firm), class: "button"
-          = link_to "delete", firm_path(firm), method: :delete, data: { confirm: "You sure?" }, class: "button alert"
+        .btn-group.pull-right.a_indent-top5px.not_show
+          = link_to t('Edit'),  edit_firm_path(firm), class: "button"
+          = link_to t('Delete'), firm_path(firm), method: :delete, data: { confirm: "You sure?" }, class: "button alert"

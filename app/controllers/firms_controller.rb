@@ -34,12 +34,14 @@ class FirmsController < ApplicationController
 
   def create
     @firm = current_user.firms.build(params[:firm])
+    @categories = ancestry_options(Category.at_depth(1).scoped.arrange(:order => 'name')) {|i| "#{'-' * i.depth} #{i.name}" }
+
     if @firm.save
       flash[:success] = "Firm created!"
       redirect_to root_url
     else
       flash[:error] = "Firm NOT CREATED!"
-      redirect_to root_url
+      render 'new'
     end
   end
 

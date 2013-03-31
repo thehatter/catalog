@@ -19,6 +19,13 @@ admin = User.new do |u|
   u.admin = true
 end
 
+den = User.new do |u|
+  u.username = "den"
+  u.email = 'andrewlutenko@gmail.com'
+  u.password = 'ngiklg'
+  u.admin = true
+end
+
 admin.save!
 
 

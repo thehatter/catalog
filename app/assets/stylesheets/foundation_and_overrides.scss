@@ -332,6 +332,7 @@
 // $alert-padding-right: $alert-padding-top + emCalc(10px);
 // $alert-padding-bottom: $alert-padding-top + emCalc(1px);
 
+
 // We use these to control text style.
 // $alert-font-weight: bold;
 // $alert-font-size: emCalc(14px);
@@ -346,6 +347,7 @@
 // $alert-border-width: 1px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
 // $alert-bottom-margin: emCalc(20px);
+$alert-bottom-margin: 0px;
 
 // We use these to style the close buttons
 // $alert-close-color: #333;

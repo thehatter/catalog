@@ -24,16 +24,16 @@
             <li class="has-dropdown">
               <a href="#"><%= current_user.username %></a>
               <ul class="dropdown">
-                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                <li><%= link_to t('Edit_profile'), edit_user_registration_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                <li><%= link_to t("Logout"), destroy_user_session_path, method: :delete %>
                 </ul>
             </li>
 
 
           <% else %>
-            <li><%= link_to t("Sign up"), new_user_registration_path %></li>
-            <li><%= link_to t("Login"), new_user_session_path %></li>
+            <li><%= link_to t("Sign_up"), new_user_registration_path %></li>
+            <li><%= link_to t("Sign_in"), new_user_session_path %></li>
           <% end %>
         </ul>
       </section>

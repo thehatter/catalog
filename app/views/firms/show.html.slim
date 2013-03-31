@@ -1,30 +1,29 @@
+.firm_in
+  h3 = @firm.name
 
-h3
-  = @firm.name
+  .firm_img = image_tag(@firm.favatar_url(:thumb_200)) if @firm.favatar_url
 
-p
   = @firm.description.html_safe
 
-br
+  br
 
-ul
-  - @addresses.each do |addresses|
-    li = addresses.line_1
-    ul
-      - addresses.phones.each do |phone|
-        li = phone.number
-
-
-
-ul
- - @galleries.each do |gallery|
-
-  li
-    = image_tag(gallery.image_url(:thumb))
-    = gallery.title
+  .addresses
+    - @addresses.each do |addresses|
+      .address
+        .address_line = addresses.line_1
+        ul.phones
+          - addresses.phones.each do |phone|
+            li = phone.number
 
 
-= image_tag(@firm.favatar_url(:thumb)) if @firm.favatar_url
+  ul
+   - @galleries.each do |gallery|
 
-= link_to 'Edit', edit_firm_path
-= link_to 'Back', firms_path
+    li
+      = image_tag(gallery.image_url(:thumb))
+      = gallery.title
+
+
+
+
+  = link_to t('Edit'), edit_firm_path, class: "button"

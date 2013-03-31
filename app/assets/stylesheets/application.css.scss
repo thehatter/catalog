@@ -15,6 +15,8 @@
 
 @import "displays";
 
+.not_show {display: none;}
+
 #container {
   position: relative;
   padding: 10px 0 0 0;
@@ -62,6 +64,7 @@
   .categories-index .catalog_bar {
     position: relative;
     width: 100%; 
+    margin: 0 0 0 20px;
   }
 
   .categories-index #content {

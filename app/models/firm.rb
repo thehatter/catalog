@@ -16,6 +16,7 @@
 
 class Firm < ActiveRecord::Base
   before_validation :generate_slug
+  before_save :sanitize_description
 
   belongs_to :user
   belongs_to :category, :counter_cache => true
@@ -35,6 +36,8 @@ class Firm < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :slug, uniqueness: true, presence: true
+  validates :description, :length => { :maximum => 2100, 
+                                       :too_long => "%{count} characters is the maximum allowed" }
 
 
 
@@ -46,6 +49,10 @@ class Firm < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= name.parameterize
+  end
+
+  def sanitize_description 
+    self.description = ActionController::Base.helpers.sanitize(self.description, :tags => %w(strong b tr p tr br em))
   end
 
 

@@ -1,6 +1,12 @@
 ru:
-  Login: "Войти"
-  Sign up: "Зарегистрироваться"
+  Sign_in: "Войти"
+  Sign_up: "Зарегистрироваться"
+  Forgot_your_password: "Забыли свой парололь?"
+  Logout: "Выйти"
+  Edit_profile: "Редактировать профиль"
+
+  Edit: "Редактировать"
+  Delete: "Удалить"
 
   phone:
     number_types:
@@ -9,7 +15,7 @@ ru:
       life: "Life"
       city: "Городской"
 
-
+  login: "логин"
   firms:
     new:
       new_firm: "Новая фирма"
@@ -18,4 +24,5 @@ ru:
     form:
       add_gallery_im: "Добавить картинку"
       gallery: "Галерея"
+      add_address: "Добавить адрес"
       save_firm: "Сохранить фирму"
