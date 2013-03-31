@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require ckeditor-jquery
+//= require jquery.masonry.min
 //= require_tree .
 //= require cocoon
-//= require ckeditor-jquery
+
 
 $(document).foundation();
