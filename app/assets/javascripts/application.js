@@ -16,6 +16,5 @@
 //= require_tree .
 //= require cocoon
 //= require ckeditor-jquery
-//= require jquery_plg
 
 $(document).foundation();
