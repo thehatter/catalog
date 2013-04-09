@@ -19,6 +19,8 @@ admin = User.new do |u|
   u.admin = true
 end
 
+admin.save!
+
 den = User.new do |u|
   u.username = "den"
   u.email = 'andrewlutenko@gmail.com'
@@ -26,7 +28,7 @@ den = User.new do |u|
   u.admin = true
 end
 
-admin.save!
+den.save!
 
 
 Category.attr_accessible :ancestry, :id 
